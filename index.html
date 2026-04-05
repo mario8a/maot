@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mario Abraham Ochoa Tovar | Mobile &amp; Fullstack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <style>
+    /* ─── Design Tokens ────────────────────────────────────────────────────── */
+    :root {
+      --surface:                  #131313;
+      --surface-dim:              #131313;
+      --surface-bright:           #3a3939;
+      --surface-container-lowest: #0e0e0e;
+      --surface-container-low:    #1c1b1b;
+      --surface-container:        #201f1f;
+      --surface-container-high:   #2a2a2a;
+      --surface-container-highest:#353534;
+      --surface-variant:          #353534;
+      --background:               #131313;
+
+      --primary:                  #adc6ff;
+      --primary-container:        #4d8eff;
+      --on-primary:               #002e6a;
+      --primary-fixed:            #d8e2ff;
+      --primary-fixed-dim:        #adc6ff;
+
+      --secondary:                #b1c6f9;
+      --secondary-container:      #304671;
+      --on-secondary:             #182f59;
+
+      --tertiary:                 #ffb786;
+      --tertiary-container:       #df7412;
+
+      --on-surface:               #e5e2e1;
+      --on-surface-variant:       #c2c6d6;
+      --on-background:            #e5e2e1;
+      --inverse-surface:          #e5e2e1;
+      --inverse-on-surface:       #313030;
+
+      --outline:                  #8c909f;
+      --outline-variant:          #424754;
+
+      --error:                    #ffb4ab;
+      --error-container:          #93000a;
+
+      --font-headline: 'Manrope', sans-serif;
+      --font-body:     'Inter', sans-serif;
+
+      --radius-sm:   0.25rem;
+      --radius-md:   0.375rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+
+      --transition-base: 200ms ease;
+      --transition-slow: 500ms ease;
+      --transition-color: color 200ms ease, background-color 200ms ease, opacity 200ms ease;
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(173, 198, 255, 0.25); }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 1.5rem;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* ─── Layout Helpers ───────────────────────────────────────────────────── */
+    .container {
+      max-width: 88rem;
+      margin-inline: auto;
+      padding-inline: 2rem;
+    }
+
+    /* ─── Navigation ───────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 5rem;
+      background: rgba(19, 19, 19, 0.70);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    .nav__inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #f0f0f0;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav__link {
+      font-family: var(--font-headline);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--on-surface-variant);
+      transition: var(--transition-color);
+    }
+
+    .nav__link:hover,
+    .nav__link--active {
+      color: var(--on-surface);
+    }
+
+    .nav__link--active {
+      color: #3b82f6;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .btn--primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 0.625rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+    }
+
+    .btn--primary:hover {
+      opacity: 0.9;
+      transform: scale(0.98);
+    }
+
+    .btn--primary-lg {
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-full);
+      font-size: 1.125rem;
+    }
+
+    .btn--primary-lg:hover {
+      box-shadow: 0 0 20px rgba(173, 198, 255, 0.30);
+    }
+
+    .btn--ghost-lg {
+      background: transparent;
+      color: var(--on-surface);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--outline-variant);
+      font-size: 1.125rem;
+    }
+
+    .btn--ghost-lg:hover {
+      background: var(--surface-container-high);
+    }
+
+    /* ─── Hero ─────────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      overflow: hidden;
+    }
+
+    .hero__glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero__glow-left {
+      position: absolute;
+      top: 25%;
+      left: -5rem;
+      width: 24rem;
+      height: 24rem;
+      background: rgba(173, 198, 255, 0.08);
+      border-radius: 50%;
+      filter: blur(120px);
+    }
+
+    .hero__glow-right {
+      position: absolute;
+      bottom: 25%;
+      right: -5rem;
+      width: 24rem;
+      height: 24rem;
+      background: rgba(177, 198, 249, 0.08);
+      border-radius: 50%;
+      filter: blur(120px);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 70%;
+    }
+
+    .hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero__title {
+      font-family: var(--font-headline);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 2rem;
+    }
+
+    .hero__title-gradient {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1.1rem, 2.2vw, 1.375rem);
+      color: var(--on-surface-variant);
+      max-width: 42rem;
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ─── Section Base ─────────────────────────────────────────────────────── */
+    section { padding-block: 8rem; }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-headline);
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    /* ─── About ─────────────────────────────────────────────────────────────── */
+    .about {
+      background: var(--surface-container-low);
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about__lead {
+      font-family: var(--font-headline);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 1rem;
+    }
+
+    .about__text {
+      font-size: 1.0625rem;
+      color: var(--on-surface-variant);
+      line-height: 1.75;
+    }
+
+    .about__cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .about__card {
+      background: var(--surface-container-lowest);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+    }
+
+    .about__card-icon {
+      color: var(--primary);
+      font-size: 2rem !important;
+      margin-bottom: 1rem;
+    }
+
+    .about__card-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: 0.5rem;
+    }
+
+    .about__card-text {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+    }
+
+    /* ─── Experience ────────────────────────────────────────────────────────── */
+    .experience {
+      background: var(--surface);
+    }
+
+    .experience__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 5rem;
+    }
+
+    .experience__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 3fr 6fr 3fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 3rem 2rem;
+      border-radius: 1rem;
+      border-left: 4px solid transparent;
+      transition: all var(--transition-slow);
+    }
+
+    .exp-item:hover {
+      background: var(--surface-container-low);
+      border-left-color: var(--primary);
+    }
+
+    .exp-item--past:hover {
+      border-left-color: var(--outline-variant);
+    }
+
+    .exp-date {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.9375rem;
+    }
+
+    .exp-date--past { color: var(--on-surface-variant); }
+
+    .exp-company {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin-top: 0.25rem;
+    }
+
+    .exp-role {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .exp-desc {
+      color: var(--on-surface-variant);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .exp-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .exp-bullet {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .exp-bullet::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .tag {
+      padding: 0.25rem 0.75rem;
+      background: var(--surface-container-highest);
+      border-radius: var(--radius-full);
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Skills Bento ──────────────────────────────────────────────────────── */
+    .skills {
+      background: var(--surface-container-lowest);
+    }
+
+    .skills__header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .skills__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--surface-container);
+      border-radius: 1rem;
+      padding: 2rem;
+      border: 1px solid rgba(66, 71, 84, 0.15);
+    }
+
+    .skill-card--wide { grid-column: span 2; }
+
+    .skill-card--accent {
+      background: var(--surface-container-high);
+      border-color: rgba(173, 198, 255, 0.20);
+    }
+
+    .skill-card__title {
+      font-family: var(--font-headline);
+      font-size: 1.125rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--on-surface);
+    }
+
+    .skill-card__title .material-symbols-outlined {
+      color: var(--primary);
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+
+    .chip {
+      padding: 0.5rem 1rem;
+      background: var(--surface-container-high);
+      border-radius: var(--radius-lg);
+      font-size: 0.875rem;
+      color: var(--on-surface);
+    }
+
+    .chip--accent {
+      background: rgba(173, 198, 255, 0.10);
+      color: var(--primary);
+      border: 1px solid rgba(173, 198, 255, 0.20);
+    }
+
+    /* ─── Projects ──────────────────────────────────────────────────────────── */
+    .projects {
+      background: var(--surface);
+    }
+
+    .projects__header { margin-bottom: 5rem; }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--surface-container-low);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-slow);
+    }
+
+    .project-card:hover { transform: translateY(-8px); }
+
+    .project-card__img-wrap {
+      height: 16rem;
+      overflow: hidden;
+    }
+
+    .project-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transform: scale(1.05);
+      transition: filter var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .project-card:hover .project-card__img {
+      filter: grayscale(0%);
+      transform: scale(1);
+    }
+
+    .project-card__body {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-card__name {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .project-card__arrow {
+      color: var(--primary);
+      transition: transform var(--transition-base);
+    }
+
+    .project-card:hover .project-card__arrow {
+      transform: translate(4px, -4px);
+    }
+
+    .project-card__desc {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      flex: 1;
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+
+    .project-tag {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    /* ─── Certifications ────────────────────────────────────────────────────── */
+    .certs {
+      background: var(--surface-container-low);
+      padding-block: 5rem;
+    }
+
+    .certs__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .certs__title-block .section-title {
+      font-size: 1.875rem;
+    }
+
+    .certs__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cert-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: var(--surface-container-highest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: transform var(--transition-base);
+      flex-shrink: 0;
+    }
+
+    .cert-icon .material-symbols-outlined { font-size: 2rem !important; }
+
+    .cert-item:hover .cert-icon { transform: scale(1.1); }
+
+    .cert-name {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: 0.25rem;
+    }
+
+    .cert-issuer {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+    }
+
+    /* ─── Contact ───────────────────────────────────────────────────────────── */
+    .contact {
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .contact .section-label { display: block; margin-bottom: 1.5rem; }
+
+    .contact__title {
+      font-family: var(--font-headline);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact__sub {
+      font-size: 1.125rem;
+      color: var(--on-surface-variant);
+      max-width: 40rem;
+      margin-inline: auto;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .contact__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .btn--contact-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 1.25rem 2.5rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      transition: box-shadow var(--transition-base);
+    }
+
+    .btn--contact-primary:hover {
+      box-shadow: 0 0 30px rgba(173, 198, 255, 0.40);
+    }
+
+    .btn--contact-ghost {
+      background: transparent;
+      color: var(--on-surface);
+      padding: 1.25rem 2.5rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--outline-variant);
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      transition: background-color var(--transition-base);
+    }
+
+    .btn--contact-ghost:hover { background: var(--surface-container-high); }
+
+    /* ─── Footer ────────────────────────────────────────────────────────────── */
+    .footer {
+      background: var(--surface-container-lowest);
+      padding-block: 3rem;
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer__copy {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer__link {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4a4a4a;
+      transition: color var(--transition-base);
+    }
+
+    .footer__link:hover { color: #3b82f6; }
+
+    /* ─── Responsive ────────────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about__grid        { grid-template-columns: 1fr; }
+      .exp-item           { grid-template-columns: 1fr; gap: 1rem; }
+      .exp-tags           { justify-content: flex-start; }
+      .skills__grid       { grid-template-columns: repeat(2, 1fr); }
+      .skill-card--wide   { grid-column: span 2; }
+      .projects__grid     { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .container          { padding-inline: 1.25rem; }
+      section             { padding-block: 5rem; }
+      .nav__links         { display: none; }
+      .hero__content      { max-width: 100%; }
+      .about__cards       { grid-template-columns: 1fr; }
+      .skills__grid       { grid-template-columns: 1fr; }
+      .skill-card--wide   { grid-column: span 1; }
+      .projects__grid     { grid-template-columns: 1fr; }
+      .certs__inner       { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="#home" class="nav__logo">MAOT</a>
+      <ul class="nav__links" role="list">
+        <li><a class="nav__link nav__link--active" href="#home">Home</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#experience">Experience</a></li>
+        <li><a class="nav__link" href="#skills">Skills</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn--primary">Hire Me</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero" id="home">
+      <div class="hero__glow" aria-hidden="true">
+        <div class="hero__glow-left"></div>
+        <div class="hero__glow-right"></div>
+      </div>
+      <div class="container">
+        <div class="hero__content">
+          <span class="hero__eyebrow">Available for Senior Opportunities</span>
+          <h1 class="hero__title">
+            Mario Abraham<br>
+            <span class="hero__title-gradient">Ochoa Tovar.</span>
+          </h1>
+          <p class="hero__subtitle">
+            Mobile &amp; Fullstack Developer crafting high-performance digital architectures.
+            Specializing in scalable ecosystems across the entire stack.
+          </p>
+          <div class="hero__actions">
+            <a href="#experience" class="btn btn--primary-lg">View Experience</a>
+            <a href="#contact" class="btn btn--ghost-lg">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About ── -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div>
+            <span class="section-label">01 // About Me</span>
+            <p class="about__lead">Engineering resilience into every line of code.</p>
+          </div>
+          <div>
+            <p class="about__text">
+              With a deep focus on <strong style="color: var(--on-surface); font-weight: 500;">React Native, Kotlin, and Next.js</strong>,
+              I build cross-platform solutions that don't compromise on native performance.
+              My approach integrates modern architectural patterns with robust CI/CD pipelines
+              to ensure rapid, reliable delivery.
+            </p>
+            <div class="about__cards">
+              <div class="about__card">
+                <span class="material-symbols-outlined about__card-icon">bolt</span>
+                <h3 class="about__card-title">Performance Optimization</h3>
+                <p class="about__card-text">Maximizing frame rates and reducing payload sizes for seamless user experiences.</p>
+              </div>
+              <div class="about__card">
+                <span class="material-symbols-outlined about__card-icon">psychology</span>
+                <h3 class="about__card-title">AI Integration</h3>
+                <p class="about__card-text">Leveraging LLMs and computer vision to build intelligent, self-optimizing applications.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Experience ── -->
+    <section class="experience" id="experience">
+      <div class="container">
+        <div class="experience__header">
+          <div>
+            <span class="section-label">02 // Experience</span>
+            <h2 class="section-title">Professional Journey</h2>
+          </div>
+        </div>
+
+        <div class="experience__list">
+
+          <!-- Role 1 -->
+          <article class="exp-item">
+            <div>
+              <p class="exp-date">2022 — Present</p>
+              <p class="exp-company">Services &amp; Processes Solutions</p>
+            </div>
+            <div>
+              <h3 class="exp-role">Senior Mobile &amp; Fullstack Developer</h3>
+              <p class="exp-desc">
+                Architecting mission-critical applications for industry leaders.
+                Leading technical strategy for financial and ticketing ecosystems.
+              </p>
+              <ul class="exp-bullets">
+                <li class="exp-bullet">NOWO (Aserta): Scalable financial platform engineering.</li>
+                <li class="exp-bullet">Superboletos: High-traffic ticketing systems optimization.</li>
+                <li class="exp-bullet">Document Validator (Coppel): AI-powered validation workflows.</li>
+              </ul>
+            </div>
+            <div class="exp-tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </article>
+
+          <!-- Role 2 -->
+          <article class="exp-item exp-item--past">
+            <div>
+              <p class="exp-date exp-date--past">2021 — 2022</p>
+              <p class="exp-company">IronBit</p>
+            </div>
+            <div>
+              <h3 class="exp-role">Mobile Developer — BBVA Project</h3>
+              <p class="exp-desc">
+                Focused on delivering secure, modular mobile banking features
+                within a complex enterprise environment.
+              </p>
+            </div>
+            <div class="exp-tags">
+              <span class="tag">Kotlin</span>
+              <span class="tag">Swift</span>
+              <span class="tag">Agile</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills ── -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="skills__header">
+          <span class="section-label">03 // Skills</span>
+          <h2 class="section-title">Technical Arsenal</h2>
+        </div>
+
+        <div class="skills__grid">
+
+          <div class="skill-card skill-card--wide">
+            <h3 class="skill-card__title">
+              <span class="material-symbols-outlined">smartphone</span>
+              Mobile Development
+            </h3>
+            <div class="skill-chips">
+              <span class="chip">React Native</span>
+              <span class="chip">Kotlin</span>
+              <span class="chip">Swift</span>
+              <span class="chip">Expo</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3 class="skill-card__title">
+              <span class="material-symbols-outlined">web</span>
+              Frontend
+            </h3>
+            <div class="skill-chips">
+              <span class="chip">React</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">TypeScript</span>
+            </div>
+          </div>
+
+          <div class="skill-card skill-card--accent">
+            <h3 class="skill-card__title">
+              <span class="material-symbols-outlined">psychology</span>
+              AI &amp; ML
+            </h3>
+            <div class="skill-chips">
+              <span class="chip chip--accent">AWS AI</span>
+              <span class="chip chip--accent">GenAI</span>
+              <span class="chip chip--accent">LLMs</span>
+            </div>
+          </div>
+
+          <div class="skill-card skill-card--wide">
+            <h3 class="skill-card__title">
+              <span class="material-symbols-outlined">cloud</span>
+              Cloud &amp; DevOps
+            </h3>
+            <div class="skill-chips">
+              <span class="chip">AWS (EC2, S3, Lambda)</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">GitHub Actions</span>
+              <span class="chip">Docker</span>
+            </div>
+          </div>
+
+          <div class="skill-card skill-card--wide">
+            <h3 class="skill-card__title">
+              <span class="material-symbols-outlined">dns</span>
+              Backend &amp; Databases
+            </h3>
+            <div class="skill-chips">
+              <span class="chip">Node.js</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Redis</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Projects ── -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="projects__header">
+          <span class="section-label">04 // Projects</span>
+          <h2 class="section-title">Featured Solutions</h2>
+        </div>
+
+        <div class="projects__grid">
+
+          <article class="project-card">
+            <div class="project-card__img-wrap">
+              <img
+                class="project-card__img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXDBB1x5ZmzC_ApbrfnrG-EHYkLnaDPzVb-cCJ2vxABjnkik5dI4GTnrxehgmCAQaGDTRXfsQdoDG5ayqXpfyMU8YUKJVVMICqW1K1q27mCxXIEpGTzRluHHkm86aLFvdzZSpArNO5TXw19HNO0fF6mS1bxOjHUTHuNW8FdkyIdRDqLbnX1dLJh2iSngct-sFotSCZ3nGXO4L7ustIBSgeB-0fzDKP4SaaCiGYFMgK9qIgmFc2SCUEyXsTFCQLiV7v6qqodkYxPhL"
+                alt="NOWO financial app dashboard"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__top">
+                <h3 class="project-card__name">NOWO App</h3>
+                <span class="material-symbols-outlined project-card__arrow">arrow_outward</span>
+              </div>
+              <p class="project-card__desc">
+                A comprehensive financial services mobile application built with React Native,
+                focusing on security and real-time transaction processing.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-tag">Mobile</span>
+                <span class="project-tag">Fintech</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__img-wrap">
+              <img
+                class="project-card__img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZC7fQZxyLjoOpjd7NAE3ltnS4sv-vCXxTKBlDjQIZ5K1Dkf2vdNRQGKN_FjbnM54Ovl5FHx7UR0o0m3zrsMouEV-5zFL_bb3vh_8Qzcu-YUf8q-dZ2-INcchKefmyxt1Ns8AtAsVPkU_TJFzv0gPNwfPf-okjclyXRnn-Z0NMyeeHxENkP4QUFe5nt9nggzxh6Qd42Mxr9VQD54eXycSwqHVoNVyZ2Ki7LPbvXxmn4xYyBH3ZbKqfCy3ccjmt-LavbX5Vo0ZtR5Zc"
+                alt="Superboletos ticketing platform"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__top">
+                <h3 class="project-card__name">Superboletos</h3>
+                <span class="material-symbols-outlined project-card__arrow">arrow_outward</span>
+              </div>
+              <p class="project-card__desc">
+                Scalable ticketing system handling thousands of concurrent users
+                during high-demand event launches.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-tag">Performance</span>
+                <span class="project-tag">Web</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__img-wrap">
+              <img
+                class="project-card__img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWxCahZrWUauTYQwny88de9i5In_iLNyZTktU5AX0U9Ky72c5I0h77JVy7nMXJ12_VxQ3oMcJqhwAosp0i1-gVqVEewJQ4GTpgxwAxTbwHbk0ncEW50lzfySWQxOFNjLhgefLyCRo7lwqKUexc9u5bmzGSaIdHqV-3Vn6e-su75tlVVwvNa5Aj6h7O5QBA20PUrVmEELgec3GsvO_m7x6CC0-Ty5cc40b2KqEx5Vg1i6jcurtljN0Sg8m0PD84Xg0R5pq6_yUeVqt-"
+                alt="AI Document Validator system"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-card__body">
+              <div class="project-card__top">
+                <h3 class="project-card__name">Doc Validator</h3>
+                <span class="material-symbols-outlined project-card__arrow">arrow_outward</span>
+              </div>
+              <p class="project-card__desc">
+                AI-powered document verification system reducing manual processing time
+                by 80% through automated OCR and validation.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-tag">AI</span>
+                <span class="project-tag">Enterprise</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Certifications ── -->
+    <section class="certs">
+      <div class="container">
+        <div class="certs__inner">
+          <div class="certs__title-block">
+            <span class="section-label">Certifications</span>
+            <h2 class="section-title">AWS Certified Professional</h2>
+          </div>
+          <div class="certs__list">
+            <div class="cert-item">
+              <div class="cert-icon">
+                <span class="material-symbols-outlined">verified</span>
+              </div>
+              <div>
+                <p class="cert-name">AWS Cloud Practitioner</p>
+                <p class="cert-issuer">Amazon Web Services</p>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">
+                <span class="material-symbols-outlined">psychology_alt</span>
+              </div>
+              <div>
+                <p class="cert-name">AWS AI Practitioner</p>
+                <p class="cert-issuer">Amazon Web Services</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ── -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <span class="section-label">05 // Contact</span>
+        <h2 class="contact__title">Let's build the<br>next big thing.</h2>
+        <p class="contact__sub">
+          Currently looking for new challenges and collaborations.
+          Reach out to discuss architectural strategies or project opportunities.
+        </p>
+        <div class="contact__actions">
+          <a href="mailto:contact@marioabraham.dev" class="btn--contact-primary">
+            <span class="material-symbols-outlined">mail</span>
+            Email Me
+          </a>
+          <a href="#" class="btn--contact-ghost">
+            <span class="material-symbols-outlined">link</span>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2024 Mario Abraham Ochoa Tovar. Built with precision.</p>
+        <nav class="footer__links" aria-label="Social links">
+          <a class="footer__link" href="#">LinkedIn</a>
+          <a class="footer__link" href="#">GitHub</a>
+          <a class="footer__link" href="#">Twitter</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Active nav link on scroll -->
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav__link');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('nav__link--active'));
+          const active = document.querySelector(`.nav__link[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('nav__link--active');
+        }
+      });
+    }, { threshold: 0.45 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
