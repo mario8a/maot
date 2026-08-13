@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mario Ochoa Tovar | Desarrollador Mobile y Fullstack</title>
+  <title>Mario Ochoa Tovar | Desarrollador de Software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
@@ -121,12 +121,19 @@
     }
 
     .nav__logo {
+      display: inline-flex;
+      align-items: center;
       font-family: var(--font-headline);
       font-size: 1.55rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       color: #f4efe9;
       text-transform: uppercase;
+    }
+
+    .nav__logo-img {
+      height: 2.5rem;
+      width: auto;
     }
 
     .nav__links {
@@ -1126,7 +1133,9 @@
   <!-- ── Navigation ── -->
   <nav class="nav" aria-label="Navegacion principal">
     <div class="nav__inner container">
-      <a href="#home" class="nav__logo">MAOT</a>
+      <a href="#home" class="nav__logo" aria-label="Ir al inicio">
+        <img src="logo.png" alt="Logo de Mario Ochoa" class="nav__logo-img" />
+      </a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="main-nav-links" aria-label="Abrir o cerrar menu de navegacion">
         <span class="material-symbols-outlined">menu</span>
       </button>
@@ -1138,7 +1147,7 @@
         <li><a class="nav__link" href="#services">Servicios</a></li>
         <li><a class="nav__link" href="#contact">Contacto</a></li>
       </ul>
-      <a href="#contact" class="btn btn--primary">Trabajemos juntos</a>
+      <a href="#contact" class="btn btn--primary">Hablemos</a>
     </div>
   </nav>
 
@@ -1153,43 +1162,44 @@
       <div class="container">
         <div class="hero__layout">
           <div class="hero__content">
-            <span class="hero__eyebrow">Desarrollador mobile + fullstack</span>
+            <span class="hero__eyebrow">Desarrollador de software</span>
             <h1 class="hero__title">
               Mario Abraham<br>
               <span class="hero__title-gradient">Ochoa Tovar</span>
             </h1>
             <p class="hero__subtitle">
-              Creo productos resilientes para fintech, ticketing y operaciones empresariales usando React Native, Kotlin y sistemas fullstack cloud-native.
+              Desarrollo sitios web y aplicaciones a medida con React, Next.js, React Native, TypeScript, Kotlin y Node.js.
+              Trabajo contigo para convertir una idea en una solucion clara, funcional y facil de mantener.
             </p>
             <div class="hero__actions">
               <a href="#services" class="btn btn--primary-lg">Ver servicios</a>
-              <a href="#contact" class="btn btn--ghost-lg">Iniciar conversacion</a>
+              <a href="#contact" class="btn btn--ghost-lg">Escribeme</a>
             </div>
           </div>
           <aside class="hero__panel" aria-label="Metricas rapidas">
             <div class="hero__panel-header">
-              <p class="hero__panel-label">Enfoque actual</p>
-              <p class="hero__status"><span class="hero__status-dot" aria-hidden="true"></span>Entregas semanales</p>
+              <p class="hero__panel-label">En que te puedo ayudar</p>
+              <p class="hero__status"><span class="hero__status-dot" aria-hidden="true"></span>Disponible para proyectos</p>
             </div>
             <div class="hero__metrics">
               <div class="hero__metric">
-                <p class="hero__metric-value">7+</p>
-                <p class="hero__metric-label">Anos creando productos</p>
+                <p class="hero__metric-value">Web</p>
+                <p class="hero__metric-label">Landing pages y sitios completos</p>
               </div>
               <div class="hero__metric">
-                <p class="hero__metric-value">3</p>
-                <p class="hero__metric-label">Verticales clave</p>
+                <p class="hero__metric-value">Apps</p>
+                <p class="hero__metric-label">Desarrollo web y movil</p>
               </div>
               <div class="hero__metric">
-                <p class="hero__metric-value">RN</p>
-                <p class="hero__metric-label">Mobile nativo primero</p>
+                <p class="hero__metric-value">Cloud</p>
+                <p class="hero__metric-label">Firebase y despliegues web</p>
               </div>
               <div class="hero__metric">
-                <p class="hero__metric-value">CI/CD</p>
-                <p class="hero__metric-label">Pipelines de release confiables</p>
+                <p class="hero__metric-value">Soporte</p>
+                <p class="hero__metric-label">Cambios y mantenimiento</p>
               </div>
             </div>
-            <p class="hero__panel-copy">Desde arquitectura hasta observabilidad en produccion, cada sprint se optimiza para rendimiento, velocidad y mantenibilidad.</p>
+            <p class="hero__panel-copy">Puedo encargarme del desarrollo, dominio, hosting y publicacion para que tengas tu proyecto en linea sin complicarte.</p>
           </aside>
           </div>
         </div>
@@ -1202,25 +1212,24 @@
         <div class="about__grid">
           <div>
             <span class="section-label">01 // sobre mi</span>
-            <p class="about__lead">Ingenieria resiliente en cada linea de codigo.</p>
+            <p class="about__lead">Desarrollo software util, claro y bien hecho.</p>
           </div>
           <div>
             <p class="about__text">
-              Con foco profundo en <strong class="about__focus">React Native, Kotlin y Next.js</strong>,
-              construyo soluciones multiplataforma sin comprometer rendimiento nativo.
-              Mi enfoque integra patrones modernos de arquitectura y pipelines robustos de CI/CD
-              para entregar rapido y con alta confiabilidad.
+              Soy desarrollador de software con experiencia en proyectos empresariales y tambien en trabajo directo con clientes.
+              Desarrollo sitios web, landing pages y aplicaciones con <strong class="about__focus">React, Next.js, React Native, TypeScript, Kotlin y Node.js</strong>.
+              Tambien trabajo con Firebase, Docker, GitHub Actions y bases de datos para cubrir un proyecto de punta a punta.
             </p>
             <div class="about__cards">
               <div class="about__card">
                 <span class="material-symbols-outlined about__card-icon">bolt</span>
-                <h3 class="about__card-title">Optimizacion de rendimiento</h3>
-                <p class="about__card-text">Mejoro frame rates y reduzco payloads para experiencias fluidas y estables.</p>
+                <h3 class="about__card-title">Desarrollo web para negocio y proyectos</h3>
+                <p class="about__card-text">Creo paginas modernas, responsive y faciles de administrar para que tengas una presencia profesional en internet.</p>
               </div>
               <div class="about__card">
                 <span class="material-symbols-outlined about__card-icon">psychology</span>
-                <h3 class="about__card-title">Integracion de AI</h3>
-                <p class="about__card-text">Integro LLMs y computer vision para construir aplicaciones mas inteligentes y adaptables.</p>
+                <h3 class="about__card-title">Automatizacion e integraciones</h3>
+                <p class="about__card-text">Implemento integraciones y automatizaciones utiles para simplificar procesos dentro de cada proyecto.</p>
               </div>
             </div>
           </div>
@@ -1246,13 +1255,14 @@
             <div>
               <h3 class="exp-role">Desarrollador Mobile &amp; Fullstack</h3>
               <p class="exp-desc">
-                Arquitectura de aplicaciones mission-critical para empresas lideres.
-                Liderazgo tecnico en ecosistemas financieros y de ticketing.
+                Desarrollo y mantenimiento de aplicaciones web y moviles para proyectos empresariales,
+                participando en implementacion de funcionalidades, integraciones y mejoras continuas.
               </p>
               <ul class="exp-bullets">
-                <li class="exp-bullet">NOWO (Aserta): ingenieria de plataforma financiera escalable.</li>
-                <li class="exp-bullet">Superboletos: optimizacion de sistemas de ticketing de alto trafico.</li>
-                <li class="exp-bullet">Document Validator (Coppel): flujos de validacion impulsados por AI.</li>
+                <li class="exp-bullet">NOWO (Aserta): desarrollo de funcionalidades para plataforma financiera usando React Native, Next.js y Node.js.</li>
+                <li class="exp-bullet">Superboletos: mejoras y soporte en flujos de ticketing y experiencia de usuario en aplicaciones y web.</li>
+                <li class="exp-bullet">Document Validator (Coppel): implementacion de flujos de validacion documental con apoyo de herramientas de AI.</li>
+                <li class="exp-bullet">Proyecto freelance: landing page para empresa nueva, incluyendo desarrollo, dominio, hosting y publicacion.</li>
               </ul>
             </div>
             <div class="exp-tags">
@@ -1271,8 +1281,8 @@
             <div>
               <h3 class="exp-role">Desarrollador Mobile - Proyecto BBVA</h3>
               <p class="exp-desc">
-                Enfoque en entregar funcionalidades de banca movil seguras y modulares
-                dentro de un entorno empresarial complejo.
+                Desarrollo de modulos y funcionalidades para app bancaria,
+                colaborando con equipos multidisciplinarios en un entorno agile.
               </p>
             </div>
             <div class="exp-tags">
@@ -1291,7 +1301,7 @@
       <div class="container">
         <div class="skills__header">
           <span class="section-label">03 / capacidades</span>
-          <h2 class="section-title">Stack técnico y herramientas</h2>
+          <h2 class="section-title">Stack tecnico y herramientas</h2>
         </div>
 
         <div class="skills__grid">
@@ -1327,7 +1337,6 @@
               AI &amp; ML
             </h3>
             <div class="skill-chips">
-              <span class="chip chip--accent">AWS AI</span>
               <span class="chip chip--accent">GenAI</span>
               <span class="chip chip--accent">LLMs</span>
             </div>
@@ -1339,7 +1348,6 @@
               Cloud &amp; DevOps
             </h3>
             <div class="skill-chips">
-              <span class="chip">AWS (EC2, S3, Lambda)</span>
               <span class="chip">Firebase</span>
               <span class="chip">GitHub Actions</span>
               <span class="chip">Docker</span>
@@ -1349,7 +1357,7 @@
           <div class="skill-card skill-card--wide">
             <h3 class="skill-card__title">
               <span class="material-symbols-outlined">dns</span>
-              Backend &amp; Bases de datos
+              Backend &amp; bases de datos
             </h3>
             <div class="skill-chips">
               <span class="chip">Node.js</span>
@@ -1368,56 +1376,53 @@
       <div class="container">
         <div class="services__header">
           <span class="section-label">04 / servicios</span>
-          <h2 class="section-title">Servicios para lanzar y escalar productos</h2>
+          <h2 class="section-title">Servicios para proyectos freelance</h2>
         </div>
 
         <div class="services__grid">
 
           <article class="service-card">
-            <p class="service-card__eyebrow">01 · Landing page / sitio de marketing</p>
-            <h3 class="service-card__title">Sitios que empiezan a vender desde la primera semana</h3>
-            <p class="service-card__subtitle">Diseno y desarrollo de una landing enfocada en conversion para que pases de idea a captacion real sin ciclos eternos.</p>
+            <p class="service-card__eyebrow">01 · Servicio principal</p>
+            <h3 class="service-card__title">Landing pages y sitios web para negocios, emprendimientos y proyectos</h3>
+            <p class="service-card__subtitle">Diseno y desarrollo de paginas web a medida, con enfoque en claridad, buena presentacion y facilidad de mantenimiento.</p>
             <p class="service-card__for">
-              Ideal para founders y equipos que estan por lanzar producto, campana o validacion comercial y necesitan presencia online rapida, clara y profesional.
+              Ideal si necesitas una pagina profesional para presentar tu negocio, mostrar tus servicios o lanzar un proyecto nuevo.
             </p>
             <ul class="service-list">
-              <li>Diseno UI/UX completamente personalizado, alineado a tu oferta y audiencia.</li>
-              <li>Construccion mobile-first para que el sitio funcione impecable en celular y desktop.</li>
-              <li>Estructura base para SEO tecnico con contenido orientado a intencion de busqueda.</li>
-              <li>Medicion configurada con analytics para tomar decisiones basadas en datos reales.</li>
-              <li>Publicacion en hosting con dominio propio y configuracion de entorno lista para operar.</li>
-              <li>Soporte directo conmigo para mejoras puntuales y mantenimiento continuo.</li>
+              <li>Diseno y desarrollo completo de la pagina.</li>
+              <li>Implementacion responsive y mobile-first.</li>
+              <li>Formularios de contacto e integraciones sencillas.</li>
+              <li>Configuracion de dominio, hosting y publicacion.</li>
+              <li>Soporte para mantenimiento, ajustes y cambios posteriores.</li>
             </ul>
-            <p class="service-card__note">Resultado esperado: una pagina rapida, clara y lista para convertir visitas en leads o ventas sin depender de plantillas genericas.</p>
+            <p class="service-card__note">Trabajo directo contigo para que el sitio quede alineado a lo que realmente necesitas.</p>
           </article>
 
           <article class="service-card service-card--wide">
-            <p class="service-card__eyebrow">02 · Apps móviles multiplataforma</p>
-            <h3 class="service-card__title">Aplicaciones iOS + Android con base sólida para crecer</h3>
-            <p class="service-card__subtitle">Construccion de apps React Native y modulos nativos cuando el producto lo requiere, con enfoque en experiencia, rendimiento y mantenibilidad.</p>
+            <p class="service-card__eyebrow">02 · Servicio especializado</p>
+            <h3 class="service-card__title">Aplicaciones web y moviles a la medida</h3>
+            <p class="service-card__subtitle">Si tu proyecto necesita algo mas que un sitio informativo, tambien desarrollo aplicaciones con React, Next.js, React Native, Kotlin y Node.js.</p>
             <p class="service-card__for">
-              Pensado para startups y companias que necesitan lanzar una app confiable sin duplicar esfuerzo entre plataformas y sin hipotecar el futuro tecnico del producto.
+              Este servicio es para productos con requerimientos tecnicos mas amplios, como paneles internos, flujos de usuario personalizados o apps moviles.
             </p>
             <ul class="service-list">
-              <li>Arquitectura inicial del proyecto: estructura de carpetas, convenciones, estado, navegacion y base escalable.</li>
-              <li>Implementacion de flujos clave: autenticacion, onboarding, dashboard, notificaciones push y consumo de APIs.</li>
-              <li>Integraciones de negocio: pagos, analitica, crash reporting, almacenamiento seguro y servicios cloud.</li>
-              <li>Optimizacion de rendimiento: reduccion de tiempos de carga, manejo de memoria, listas y renderizado fluido.</li>
-              <li>Pipeline de entrega: builds reproducibles, entornos dev/stage/prod y publicacion en App Store / Play Store.</li>
-              <li>Acompanamiento post-lanzamiento: monitoreo, hotfixes, iteraciones de features y mejora continua.</li>
+              <li>Definicion de alcance tecnico y plan de desarrollo por etapas.</li>
+              <li>Construccion de frontend, backend e integraciones necesarias.</li>
+              <li>Autenticacion, consumo de APIs, paneles y funciones personalizadas.</li>
+              <li>Configuracion de ambientes, despliegue y mantenimiento posterior.</li>
             </ul>
             <div class="service-stats" aria-label="Metricas de entrega del servicio">
               <div class="service-stat">
-                <p class="service-stat__value">iOS + Android</p>
-                <p class="service-stat__label">Una sola base de codigo</p>
+                <p class="service-stat__value">Web + App</p>
+                <p class="service-stat__label">Segun el alcance del proyecto</p>
               </div>
               <div class="service-stat">
-                <p class="service-stat__value">CI/CD</p>
-                <p class="service-stat__label">Entregas estables por sprint</p>
+                <p class="service-stat__value">Integraciones</p>
+                <p class="service-stat__label">APIs, Firebase y servicios cloud</p>
               </div>
               <div class="service-stat">
-                <p class="service-stat__value">Escalable</p>
-                <p class="service-stat__label">Preparada para crecimiento real</p>
+                <p class="service-stat__value">Soporte</p>
+                <p class="service-stat__label">Ajustes y mejoras continuas</p>
               </div>
             </div>
           </article>
@@ -1432,19 +1437,20 @@
         <div class="contact__shell">
           <div>
             <span class="section-label">05 / contacto</span>
-            <h2 class="contact__title">Construyamos lo que sigue</h2>
+            <h2 class="contact__title">Platicame tu idea</h2>
             <p class="contact__sub">
-              Abierto a roles senior y colaboraciones estrategicas donde la excelencia mobile y la ejecucion fullstack sean igual de criticas.
+              Si tienes un proyecto en mente, escribeme y cuentame que necesitas.
+              Te respondo directo para revisar alcance, tiempos y la mejor forma de construirlo.
             </p>
           </div>
           <div class="contact__actions">
-            <a href="mailto:contact@marioabraham.dev" class="btn--contact-primary">
+            <a href="mailto:mario8atovv@gmail.com" class="btn--contact-primary">
               <span class="material-symbols-outlined">mail</span>
-              Escribeme
+              Enviame un correo
             </a>
             <a href="#services" class="btn--contact-ghost">
               <span class="material-symbols-outlined">arrow_outward</span>
-              Ver servicios
+              Revisar servicios
             </a>
           </div>
         </div>
@@ -1457,7 +1463,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
-        <p class="footer__copy">&copy; 2026 Mario Abraham Ochoa Tovar. Construido con precision.</p>
+        <p class="footer__copy">&copy; 2026 Mario Abraham Ochoa Tovar. Desarrollo de software y proyectos web.</p>
         <nav class="footer__links" aria-label="Enlaces de navegacion">
           <a class="footer__link" href="#experience">Experiencia</a>
           <a class="footer__link" href="#services">Servicios</a>
